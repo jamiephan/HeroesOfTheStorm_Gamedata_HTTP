@@ -1,28 +1,38 @@
 // Hono JS router for github file proxying
 import { Hono } from "hono";
-import getGitFile from "./helper/getGitFile";
+import downloadFile from "./helper/downloadFile";
 import transform, { ALLOWED_FORMATS } from "./helper/transform";
+import { HTTPException } from "hono/http-exception";
+import Throw from "./helper/Throw";
 
-const proxy = new Hono();
+type Bindings = {
+  KV_CACHE: string;
+  HEROES_DATA_CACHE: KVNamespace;
+};
+
+const proxy = new Hono<{ Bindings: Bindings }>();
 
 proxy.get("/:path{.*}", async (c) => {
   // query params
   const version = c.req.query("version") || "latest";
   const format = c.req.query("format") || "txt";
 
-  const path = c.req.param("path");
+  // Remove multiple "/" at the same time and trailing "/"
+  const path =
+    "mods/" + c.req.param("path")?.replace(/\/+/g, "/")?.replace(/\/$/, "");
+
   // if format is allowed
   if (!ALLOWED_FORMATS.includes(format)) {
-    return c.text("Not Allowed", 405);
+    return Throw.UNACCEPTABLE_FORMAT();
   }
 
-  const response = await getGitFile(version, path);
+  const code = await downloadFile(version, path, c.env.HEROES_DATA_CACHE);
 
-  if (response.code === 404) {
-    return c.text("Not Found", 404);
+  if (!code) {
+    return Throw.NOT_FOUND();
   }
 
-  const transformed = transform(path, response.data, format);
+  const transformed = transform(path, code, format);
 
   c.header("Content-Type", transformed.contentType);
   return c.body(transformed.code);
