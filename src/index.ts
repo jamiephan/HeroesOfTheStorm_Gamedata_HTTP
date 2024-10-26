@@ -1,9 +1,10 @@
-import { Hono } from 'hono'
+import { Hono } from "hono";
+import proxy from "./proxy";
+import badgeProxy from "./badgeProxy";
 
-const app = new Hono()
+const app = new Hono();
 
-app.get('/', (c) => {
-  return c.text('Hello Hono!')
-})
+app.route("/badge/mods", badgeProxy);
+app.route("/mods", proxy);
 
-export default app
+export default app;
