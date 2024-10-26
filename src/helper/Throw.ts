@@ -21,4 +21,5 @@ export function BAD_REQUEST(message = "Bad Request") {
 export default {
   NOT_FOUND,
   UNACCEPTABLE_FORMAT,
+  BAD_REQUEST,
 };

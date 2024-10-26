@@ -2,7 +2,6 @@
 import { Hono } from "hono";
 import downloadFile from "./helper/downloadFile";
 import transform, { ALLOWED_FORMATS } from "./helper/transform";
-import { HTTPException } from "hono/http-exception";
 import Throw from "./helper/Throw";
 
 type Bindings = {
