@@ -1,4 +1,5 @@
 export default {
+  HOME: "https://github.com/jamiephan/HeroesOfTheStorm_Gamedata_HTTP",
   HOST: "https://raw.githubusercontent.com",
   USERNAME: "jamiephan",
   REPO: "HeroesOfTheStorm_Gamedata",

@@ -17,7 +17,9 @@ const proxy = new Hono<{ Bindings: Bindings }>();
 proxy.get("/:path{.*}", async (c) => {
   // query params
   const version = c.req.query("version") || "latest";
-  const pathQuery = c.req.query("path");
+
+  // URL Decode the path
+  const pathQuery = decodeURIComponent(c.req.query("path") || "");
   const label = c.req.query("label");
 
   // Remove multiple "/" at the same time and trailing "/"
@@ -71,7 +73,12 @@ proxy.get("/:path{.*}", async (c) => {
 
       // Using JSONPath instead
       const json = xmljs.xml2json(code, { compact: true });
-      const result = JSONPath.query(JSON.parse(json), pathQuery);
+      let result;
+      try {
+        result = JSONPath.query(JSON.parse(json), pathQuery);
+      } catch (e) {
+        return Throw.BAD_REQUEST("Invalid path query");
+      }
       if (!result || result.length === 0) {
         return Throw.NOT_FOUND("No results found for path query");
       }
