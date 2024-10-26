@@ -1,7 +1,7 @@
 // Hono JS router for github file proxying
 import { Hono } from "hono";
 import getGitFile from "./helper/getGitFile";
-import transform, { ALLOWED_FORMATS, CONTENT_TYPE } from "./helper/transform";
+import transform, { ALLOWED_FORMATS } from "./helper/transform";
 
 const proxy = new Hono();
 
