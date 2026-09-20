@@ -25,7 +25,7 @@ Get the file under `mods` folder in https://github.com/jamiephan/HeroesOfTheStor
     - Convert the file format version. This will also affect the `Content-Type` output. For valid formats, please refer to https://github.com/jamiephan/HeroesOfTheStorm_Gamedata_HTTP/blob/main/src/helper/transform.ts#L16. Incorrect format will just return `txt` version instead.
 - Examples:
   - Get the latest build number:
-    - [/mods/core.stormmod/base.stormdata/BuildId.txt](https://heroes-data.jamiephan.workers.dev/mods/core.stormmod/base.stormdata/BuildId.txt)
+    - [/mods/core.stormmod/base.stormdata/buildid.txt](https://heroes-data.jamiephan.workers.dev/mods/core.stormmod/base.stormdata/buildid.txt)
   - Get the Abathur data in JSON format on version [v2.55.7.93054](https://github.com/jamiephan/HeroesOfTheStorm_Gamedata/commit/f7740be66e8a111a4ffb927fd02731641a608464):
     - [/mods/heroesdata.stormmod/base.stormdata/gamedata/heroes/abathurdata/abathurdata.xml?format=json&version=v2.55.7.93054](https://heroes-data.jamiephan.workers.dev/mods/heroesdata.stormmod/base.stormdata/gamedata/heroes/abathurdata/abathurdata.xml?format=json&version=v2.55.7.93054)
 
@@ -53,7 +53,7 @@ Generate a [shields.io badge endpoint](https://shields.io/badges/endpoint-badge)
     - The `label` field for the badge endpoint.
 - Examples:
   - Get the latest build number:
-    - [/badge/mods/core.stormmod/base.stormdata/BuildId.txt?label=Build](https://heroes-data.jamiephan.workers.dev/badge/mods/core.stormmod/base.stormdata/BuildId.txt?label=Build)
+    - [/badge/mods/core.stormmod/base.stormdata/buildid.txt?label=Build](https://heroes-data.jamiephan.workers.dev/badge/mods/core.stormmod/base.stormdata/buildid.txt?label=Build)
   - Get the Abathur Ultimate Evolution cooldown on version [v2.55.7.93054](https://github.com/jamiephan/HeroesOfTheStorm_Gamedata/commit/f7740be66e8a111a4ffb927fd02731641a608464):
     - [/badge/mods/heroesdata.stormmod/base.stormdata/gamedata/heroes/abathurdata/abathurdata.xml?path=\$.Catalog.CAbilEffectTarget[?(@.\_attributes.id==%22AbathurUltimateEvolution%22)].Cost.Cooldown.\_attributes.TimeUse&version=v2.55.7.93054](<https://heroes-data.jamiephan.workers.dev/badge/mods/heroesdata.stormmod/base.stormdata/gamedata/heroes/abathurdata/abathurdata.xml?path=$.Catalog.CAbilEffectTarget[?(@._attributes.id==%22AbathurUltimateEvolution%22)].Cost.Cooldown._attributes.TimeUse&version=v2.55.7.93054>)
 
@@ -61,22 +61,8 @@ Generate a [shields.io badge endpoint](https://shields.io/badges/endpoint-badge)
 
 | Description                                                          | Badge                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 | -------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Get the latest build number                                          | ![Endpoint Badge](https://img.shields.io/endpoint?url=https%3A%2F%2Fheroes-data.jamiephan.workers.dev%2Fbadge%2Fmods%2Fcore.stormmod%2Fbase.stormdata%2FBuildId.txt%3Flabel%3DBuild)                                                                                                                                                                                                                                                                         |
+| Get the latest build number                                          | ![Endpoint Badge](https://img.shields.io/endpoint?url=https%3A%2F%2Fheroes-data.jamiephan.workers.dev%2Fbadge%2Fmods%2Fcore.stormmod%2Fbase.stormdata%2Fbuildid.txt%3Flabel%3DBuild)                                                                                                                                                                                                                                                                         |
 | Get the Abathur Ultimate Evolution cooldown on version v2.55.7.93054 | ![Endpoint Badge](<https://img.shields.io/endpoint?url=https%3A%2F%2Fheroes-data.jamiephan.workers.dev%2Fbadge%2Fmods%2Fheroesdata.stormmod%2Fbase.stormdata%2Fgamedata%2Fheroes%2Fabathurdata%2Fabathurdata.xml%3Fpath%3D%24.Catalog.CAbilEffectTarget%255B%25253F(%40._attributes.id%3D%3D%2522AbathurUltimateEvolution%2522)%255D.Cost.Cooldown._attributes.TimeUse%26version%3Dv2.55.7.93054%26label%3DAbathur%2520Ultimate%2520Evolution%2520cooldown>) |
 | Get Maiev's Fan of Knives (Q) Damage                                 | ![Endpoint Badge](<https://img.shields.io/endpoint?url=https%3A%2F%2Fheroes-data.jamiephan.workers.dev%2Fbadge%2Fmods%2Fheromods%2Fmaiev.stormmod%2Fbase.stormdata%2Fgamedata%2Fmaievdata.xml%3Fpath%3D%24.Catalog.CEffectDamage%255B%25253F(%40._attributes.id%3D%3D%2522MaievFanOfKnivesDamage%2522)%255D.Amount._attributes.value%26label%3DMaiev%2520Q%2520Damage>)                                                                                      |
 | Get the Bolt of the Storm (tp) Range                                 | ![Endpoint Badge](<https://img.shields.io/endpoint?url=https%3A%2F%2Fheroes-data.jamiephan.workers.dev%2Fbadge%2Fmods%2Fheroesdata.stormmod%2Fbase.stormdata%2Fgamedata%2Fabildata.xml%3Fpath%3D%24.Catalog.CAbilEffectTarget%255B%25253F(%40._attributes.id%3D%3D%2522FlashoftheStorms%2522)%255D.Range._attributes.value%26label%3DBolt%2520Range>)                                                                                                        |
-
-## Development
-
-### Local Setup
-
-```
-yarn install
-yarn run dev
-```
-
-### Deploy
-
-```
-npm run deploy
-```
+| Get the level 3 Hero Master Ring Level                               | ![Endpoint Badge](<https://img.shields.io/endpoint?url=https%3A%2F%2Fheroes-data.jamiephan.workers.dev%2Fbadge%2Fmods%2Fheroesdata.stormmod%2Fbase.stormdata%2Fgamedata%2Fheromasterydata.xml%3Fpath%3D%24.Catalog.CHeroMastery%255B%25253F(%40._attributes.id%3D%3D%2522MasteryRingRank3%2522)%255D.Level._attributes.value%26label%3DLevel%25203%2520Mastery%2520Ring%2520Hero%2520Level>)
